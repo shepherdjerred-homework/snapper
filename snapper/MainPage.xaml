@@ -8,6 +8,20 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <NavigationView Background="{ThemeResource SystemControlAcrylicWindowBrush}" Height="Auto" Width="Auto"
+                        Grid.Row="0" Grid.Column="0">
+        </NavigationView>
+        <ListView Height="Auto" Width="Auto" Grid.Row="0" Grid.Column="1" />
+        <StackPanel Grid.Row="0" Grid.Column="2">
+            <RichEditBox Height="Auto" Width="Auto" />
+        </StackPanel>
     </Grid>
 </Page>

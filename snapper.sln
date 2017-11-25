@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "snapper", "snapper\snapper.csproj", "{69D6262C-DBAE-4A6D-AC7B-D3C2334E591F}"
 EndProject
@@ -20,9 +20,9 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{69D6262C-DBAE-4A6D-AC7B-D3C2334E591F}.Debug|ARM.ActiveCfg = Debug|ARM
-		{69D6262C-DBAE-4A6D-AC7B-D3C2334E591F}.Debug|ARM.Build.0 = Debug|ARM
-		{69D6262C-DBAE-4A6D-AC7B-D3C2334E591F}.Debug|ARM.Deploy.0 = Debug|ARM
+		{69D6262C-DBAE-4A6D-AC7B-D3C2334E591F}.Debug|ARM.ActiveCfg = Debug|x64
+		{69D6262C-DBAE-4A6D-AC7B-D3C2334E591F}.Debug|ARM.Build.0 = Debug|x64
+		{69D6262C-DBAE-4A6D-AC7B-D3C2334E591F}.Debug|ARM.Deploy.0 = Debug|x64
 		{69D6262C-DBAE-4A6D-AC7B-D3C2334E591F}.Debug|x64.ActiveCfg = Debug|x64
 		{69D6262C-DBAE-4A6D-AC7B-D3C2334E591F}.Debug|x64.Build.0 = Debug|x64
 		{69D6262C-DBAE-4A6D-AC7B-D3C2334E591F}.Debug|x64.Deploy.0 = Debug|x64
