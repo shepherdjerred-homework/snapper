@@ -1,0 +1,4 @@
+﻿namespace snapper {
+    class StoreViewModel {
+    }
+}

@@ -9,7 +9,7 @@ namespace snapper {
 
         private void NavView_Loaded(object sender, RoutedEventArgs e) {
             foreach (NavigationViewItemBase item in NavView.MenuItems) {
-                if (item is NavigationViewItem && item.Tag.ToString() == "edit") {
+                if (item is NavigationViewItem && item.Tag.ToString() == "home") {
                     NavView.SelectedItem = item;
                     break;
                 }
@@ -25,12 +25,6 @@ namespace snapper {
                     case "Home":
                         ContentFrame.Navigate(typeof(HomePage));
                         break;
-                    case "Edit":
-                        ContentFrame.Navigate(typeof(EditPage));
-                        break;
-                    case "About":
-                        ContentFrame.Navigate(typeof(AboutPage));
-                        break;
                 }
             }
         }
@@ -45,12 +39,6 @@ namespace snapper {
                 switch (item.Tag) {
                     case "home":
                         ContentFrame.Navigate(typeof(HomePage));
-                        break;
-                    case "edit":
-                        ContentFrame.Navigate(typeof(EditPage));
-                        break;
-                    case "about":
-                        ContentFrame.Navigate(typeof(AboutPage));
                         break;
                 }
             }

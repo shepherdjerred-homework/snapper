@@ -13,17 +13,12 @@
 
         <NavigationView.MenuItems>
             <NavigationViewItem Content="Home" Tag="home" Icon="Home" />
-            <NavigationViewItem Content="Edit" Tag="edit" Icon="Edit" />
-            <NavigationViewItem Content="About" Tag="about" Icon="More" />
         </NavigationView.MenuItems>
 
         <NavigationView.HeaderTemplate>
             <DataTemplate>
-                <Grid Margin="24,24,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock x:Name="navigation_page_title" Style="{StaticResource TitleTextBlockStyle}"
+                <Grid Margin="12, 0, 0, 0">
+                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
                                FontSize="28"
                                VerticalAlignment="Center"
                                Text="Home" />
@@ -31,7 +26,7 @@
             </DataTemplate>
         </NavigationView.HeaderTemplate>
 
-        <Frame x:Name="ContentFrame" Margin="24">
+        <Frame x:Name="ContentFrame">
             <Frame.ContentTransitions>
                 <TransitionCollection>
                     <NavigationThemeTransition />
