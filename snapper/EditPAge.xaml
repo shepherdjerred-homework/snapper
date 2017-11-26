@@ -12,21 +12,18 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
-        <ListView Height="Auto" Width="Auto" Grid.Row="0" Grid.Column="0" />
-        <Grid Grid.Row="0" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="6*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Snap Title" FontSize="24" Grid.Row="0" Grid.Column="0" Margin="32" />
-            <RichEditBox Height="Auto" Width="Auto" Grid.Row="1" Grid.Column="0" Margin="32" />
-        </Grid>
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0 0 24 0">
+            <AutoSuggestBox Height="Auto" Width="Auto" Margin="0 0 0 10" />
+            <ListView x:Name="snap_list" Height="Auto" Width="Auto" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <TextBlock Text="Snap Title" FontSize="24" Margin="0 0 0 10" />
+            <RichEditBox Height="Auto" Width="Auto" />
+        </StackPanel>
     </Grid>
 </Page>

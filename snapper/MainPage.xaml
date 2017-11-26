@@ -22,12 +22,11 @@
                 <Grid Margin="24,24,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
+                    <TextBlock x:Name="navigation_page_title" Style="{StaticResource TitleTextBlockStyle}"
                                FontSize="28"
                                VerticalAlignment="Center"
-                               Text="Welcome" />
+                               Text="Home" />
                 </Grid>
             </DataTemplate>
         </NavigationView.HeaderTemplate>
