@@ -22,7 +22,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <TextBlock Text="Snap Title" FontSize="24" Margin="0 0 0 10" />
+            <TextBox Text="Snap Title" FontSize="24" Margin="0 0 0 10" />
             <RichEditBox Height="Auto" Width="Auto" />
         </StackPanel>
     </Grid>
