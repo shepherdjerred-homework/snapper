@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.Data.Sqlite;
 
 namespace snapper
 {
@@ -30,6 +31,21 @@ namespace snapper
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            using (SqliteConnection db = new SqliteConnection("Filename=snapperData.db"))
+            {
+                db.Open();
+                String tableCommand = "CREATE TABLE IF NOT EXISTS MyTable (Primary_Key INTEGER PRIMARY KEY AUTOINCREMENT, Text_Entry NVARCHAR(2048) NULL)";
+                SqliteCommand createTable = new SqliteCommand(tableCommand, db);
+                try
+                {
+                    createTable.ExecuteReader();
+                }
+                catch (SqliteException e)
+                {
+                    //Do nothing
+                }
+            }
         }
 
         /// <summary>
