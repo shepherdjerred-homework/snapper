@@ -5,6 +5,7 @@ namespace snapper {
     public sealed partial class MainPage {
         public MainPage() {
             InitializeComponent();
+            NavView.AlwaysShowHeader = false;
         }
 
         private void NavView_Loaded(object sender, RoutedEventArgs e) {
@@ -43,5 +44,6 @@ namespace snapper {
                 }
             }
         }
+
     }
 }

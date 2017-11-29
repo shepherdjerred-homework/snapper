@@ -9,22 +9,12 @@
     <NavigationView x:Name="NavView"
                     ItemInvoked="NavView_ItemInvoked"
                     SelectionChanged="NavView_SelectionChanged"
-                    Loaded="NavView_Loaded">
+                    Loaded="NavView_Loaded" 
+                    OpenPaneLength="200" >
 
-        <NavigationView.MenuItems>
-            <NavigationViewItem Content="Home" Tag="home" Icon="Home" />
+        <NavigationView.MenuItems >
+            <NavigationViewItem Content="Home" Tag="home" Icon="home" />
         </NavigationView.MenuItems>
-
-        <NavigationView.HeaderTemplate>
-            <DataTemplate>
-                <Grid Margin="12, 0, 0, 0">
-                    <TextBlock Style="{StaticResource TitleTextBlockStyle}"
-                               FontSize="28"
-                               VerticalAlignment="Center"
-                               Text="Home" />
-                </Grid>
-            </DataTemplate>
-        </NavigationView.HeaderTemplate>
 
         <Frame x:Name="ContentFrame">
             <Frame.ContentTransitions>

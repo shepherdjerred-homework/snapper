@@ -23,21 +23,6 @@ namespace snapper
         {
             InitializeComponent();
             Suspending += OnSuspending;
-
-            using (SqliteConnection db = new SqliteConnection("Filename=snapperData.db"))
-            {
-                db.Open();
-                String tableCommand = "CREATE TABLE IF NOT EXISTS MyTable (Primary_Key INTEGER PRIMARY KEY AUTOINCREMENT, Text_Entry NVARCHAR(2048) NULL)";
-                SqliteCommand createTable = new SqliteCommand(tableCommand, db);
-                try
-                {
-                    createTable.ExecuteReader();
-                }
-                catch (SqliteException e)
-                {
-                    //Do nothing
-                }
-            }
         }
 
         /// <summary>
@@ -79,6 +64,14 @@ namespace snapper
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
+
+            //draw into the title bar
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+
+            //remove the solid-colored backgrounds behind the caption controls and system back button
+            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            titleBar.ButtonBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
         }
 
         /// <summary>

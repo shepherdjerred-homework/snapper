@@ -22,7 +22,7 @@ namespace snapper {
             inMemoryStore.AddTestData();
             store = inMemoryStore;
 
-            SnapList.ItemsSource = store;
+            SnapList.ItemsSource = store.GetSnaps();
         }
 
         private void SelectFirstSnap() {
