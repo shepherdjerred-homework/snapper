@@ -2,8 +2,10 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace snapper {
     public sealed partial class HomePage {
@@ -61,6 +63,5 @@ namespace snapper {
             SnapView snap = SnapList.SelectedItem as SnapView;
             snap = selectedSnap;
         }
-
     }
 }

@@ -7,7 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid Background="{ThemeResource DetailViewBrush}">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <RadioButton Name="LightButton" Content="Light" Tapped="UIElement_OnTapped"></RadioButton>
+            <RadioButton Name="DarkButton" Content="Dark"  Tapped="UIElement_OnTapped"></RadioButton>
+        </StackPanel>
     </Grid>
 </Page>

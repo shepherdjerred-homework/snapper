@@ -2,8 +2,7 @@
     x:Class="snapper.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:snapper"
-    RequestedTheme="Dark">
+    xmlns:local="using:snapper">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

@@ -2,25 +2,36 @@
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
+using Windows.Storage;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Microsoft.Data.Sqlite;
 
 namespace snapper
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App {
+    sealed partial class App
+    {
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
         {
+            if (!ApplicationData.Current.LocalSettings.Values.ContainsKey("AppTheme"))
+            {
+                ApplicationData.Current.LocalSettings.Values["AppTheme"] = (int)ElementTheme.Light;
+            }
+            else
+            {
+                this.RequestedTheme = (ElementTheme)ApplicationData.Current.LocalSettings.Values["AppTheme"] == ElementTheme.Dark ? ApplicationTheme.Dark : ApplicationTheme.Light;
+            }
+
             InitializeComponent();
             Suspending += OnSuspending;
         }
@@ -50,6 +61,9 @@ namespace snapper
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
+
+
+               
             }
 
             if (e.PrelaunchActivated == false)
@@ -70,8 +84,19 @@ namespace snapper
 
             //remove the solid-colored backgrounds behind the caption controls and system back button
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+
+            if ((ElementTheme)ApplicationData.Current.LocalSettings.Values["AppTheme"] == ElementTheme.Dark)
+            {
+                titleBar.ButtonBackgroundColor = Colors.Transparent;
+                titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            }
+            else
+            {
+                titleBar.ButtonForegroundColor = Colors.Black;
+                titleBar.ButtonBackgroundColor = Colors.Transparent;
+                titleBar.ButtonInactiveBackgroundColor = Colors.White;
+            }
+
         }
 
         /// <summary>

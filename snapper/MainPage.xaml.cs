@@ -1,5 +1,7 @@
-﻿using Windows.UI.Xaml;
+﻿using Windows.Storage;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace snapper {
     public sealed partial class MainPage {
@@ -44,6 +46,5 @@ namespace snapper {
                 }
             }
         }
-
     }
 }

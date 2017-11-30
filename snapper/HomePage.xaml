@@ -8,7 +8,7 @@
 
     <RelativePanel Width="Auto"
                    Height="Auto">
-        <Grid Background="{ThemeResource MyDarkBrush}"
+        <Grid Background="{ThemeResource DetailViewBrush}"
               RelativePanel.AlignTopWithPanel="True"
               RelativePanel.AlignBottomWithPanel="True"
               RelativePanel.AlignLeftWithPanel="True"
@@ -64,7 +64,7 @@
                            RelativePanel.AlignTopWithPanel="True"
                            RelativePanel.AlignLeftWithPanel="True"
                            BorderThickness="0"
-                           Background = "{ThemeResource MyDarkBrush}"
+                           Background = "{ThemeResource DetailViewBrush}"
                            Text="Snap Title"
                            FontSize="32"
                          TextChanged="SnapTitle_OnTextChanged"/>
@@ -76,7 +76,7 @@
                          Margin="0 10 0 0"
                          TextWrapping="NoWrap"
                          AcceptsReturn="True"
-                         Background = "{ThemeResource MyDarkBrush}"
+                         Background = "{ThemeResource DetailViewBrush}"
                          BorderThickness="0"
                          ScrollViewer.VerticalScrollBarVisibility="Auto"
                          TextChanged="SnapContent_OnTextChanged" />
