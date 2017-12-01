@@ -28,8 +28,8 @@ namespace snapper {
         public string Content {
             get => snap.Content;
             set {
-                snap.Title = value;
-                OnPropertyChanged(new PropertyChangedEventArgs("Title"));
+                snap.Content = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("Content"));
             }
         }
 

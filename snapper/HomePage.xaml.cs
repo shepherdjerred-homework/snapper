@@ -10,7 +10,6 @@ using Windows.UI.Xaml.Navigation;
 namespace snapper {
     public sealed partial class HomePage {
         private StoreViewModel store;
-        private SnapViewModel selectedSnap;
 
         public HomePage() {
             InitializeComponent();
@@ -34,31 +33,5 @@ namespace snapper {
             }
         }
 
-        private void UpdateSelectedSnap() {
-            SnapTitle.Text = selectedSnap.Title;
-            SnapContent.Text = selectedSnap.Content;
-        }
-
-        private void SnapList_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
-            selectedSnap = SnapList.SelectedItem as SnapViewModel;
-            UpdateSelectedSnap();
-        }
-
-        // TODO This method is called when changing Snap selection.. it shouldn't
-        private void SnapTitle_OnTextChanged(object sender, TextChangedEventArgs e) {
-            Trace.WriteLine("Saving title");
-            selectedSnap.Title = SnapTitle.Text;
-        }
-
-        // TODO This method is called when changing Snap selection.. it shouldn't
-        private void SnapContent_OnTextChanged(object sender, RoutedEventArgs e) {
-            Trace.WriteLine("Saving content");
-            selectedSnap.Content = SnapContent.Text;
-        }
-
-        private void UpdateListViewSelectedSnap() {
-            SnapViewModel snap = SnapList.SelectedItem as SnapViewModel;
-            selectedSnap = snap;
-        }
     }
 }
