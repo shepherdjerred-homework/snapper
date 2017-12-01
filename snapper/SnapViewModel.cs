@@ -9,9 +9,9 @@ namespace snapper {
     class SnapViewModel : INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private SnapView snap;
+        private Snap snap;
 
-        public SnapViewModel(SnapView snap) {
+        public SnapViewModel(Snap snap) {
             this.snap = snap;
         }
 

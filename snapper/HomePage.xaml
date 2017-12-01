@@ -40,7 +40,6 @@
                           RelativePanel.AlignBottomWithPanel="True"
                           RelativePanel.AlignLeftWithPanel="True"
                           RelativePanel.AlignRightWithPanel="True"
-                          SelectedItem="{Binding selectedSnap}"
                           SelectionChanged="SnapList_OnSelectionChanged"
                               Margin="0 60 0 0">
                     <ListView.ItemTemplate>

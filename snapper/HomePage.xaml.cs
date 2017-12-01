@@ -9,8 +9,8 @@ using Windows.UI.Xaml.Navigation;
 
 namespace snapper {
     public sealed partial class HomePage {
-        private Store store;
-        private SnapView selectedSnap;
+        private StoreViewModel store;
+        private SnapViewModel selectedSnap;
 
         public HomePage() {
             InitializeComponent();
@@ -22,9 +22,9 @@ namespace snapper {
         private void LoadFromStore() {
             InMemoryStore inMemoryStore = new InMemoryStore();
             inMemoryStore.AddTestData();
-            store = inMemoryStore;
+            store = new StoreViewModel(inMemoryStore);
 
-            SnapList.ItemsSource = store.GetSnaps();
+            SnapList.ItemsSource = store.Snaps;
         }
 
         private void SelectFirstSnap() {
@@ -35,13 +35,12 @@ namespace snapper {
         }
 
         private void UpdateSelectedSnap() {
-            // Set the isChangingSnap field to true so we don't save the change to the store
             SnapTitle.Text = selectedSnap.Title;
             SnapContent.Text = selectedSnap.Content;
         }
 
         private void SnapList_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
-            selectedSnap = SnapList.SelectedItem as SnapView;
+            selectedSnap = SnapList.SelectedItem as SnapViewModel;
             UpdateSelectedSnap();
         }
 
@@ -49,19 +48,17 @@ namespace snapper {
         private void SnapTitle_OnTextChanged(object sender, TextChangedEventArgs e) {
             Trace.WriteLine("Saving title");
             selectedSnap.Title = SnapTitle.Text;
-            store.SaveSnap(selectedSnap);
         }
 
         // TODO This method is called when changing Snap selection.. it shouldn't
         private void SnapContent_OnTextChanged(object sender, RoutedEventArgs e) {
             Trace.WriteLine("Saving content");
             selectedSnap.Content = SnapContent.Text;
-            store.SaveSnap(selectedSnap);
         }
 
         private void UpdateListViewSelectedSnap() {
-            SnapView snap = SnapList.SelectedItem as SnapView;
-            snap = selectedSnap;
+            SnapViewModel snap = SnapList.SelectedItem as SnapViewModel;
+            selectedSnap = snap;
         }
     }
 }

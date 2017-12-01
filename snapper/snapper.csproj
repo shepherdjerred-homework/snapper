@@ -109,7 +109,7 @@
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SnapView.cs" />
+    <Compile Include="Snap.cs" />
     <Compile Include="StoreViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace snapper {
     abstract class Store {
-        public abstract List<SnapView> GetSnaps();
-        public abstract void SaveSnap(SnapView snap);
+        public abstract List<Snap> GetSnaps();
+        public abstract void SaveSnap(Snap snap);
     }
 }
