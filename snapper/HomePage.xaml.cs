@@ -16,9 +16,7 @@ namespace snapper
 
         private void LoadFromStore()
         {
-            InMemoryStore inMemoryStore = new InMemoryStore();
-            inMemoryStore.AddTestData();
-            store = new StoreViewModel(inMemoryStore);
+            store = new StoreViewModel(new SqliteStore());
             
             SnapList.ItemsSource = store.Snaps;
         }
@@ -42,8 +40,8 @@ namespace snapper
         private void SnapListRemoveButton_OnClick(object sender, RoutedEventArgs e)
         {
             int tempIndex = SnapList.SelectedIndex;
+            store.DeleteSnap(store.Snaps[SnapList.SelectedIndex]);
             store.Snaps.RemoveAt(SnapList.SelectedIndex);
-
             if (SnapList.Items != null && SnapList.Items.Count > 0)
             {
                 if (tempIndex == SnapList.Items.Count)

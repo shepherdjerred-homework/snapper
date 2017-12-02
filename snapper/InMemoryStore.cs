@@ -18,6 +18,14 @@ namespace snapper {
             Snaps[snap.Id] = snap;
         }
 
+        public override void UpdateSnap(Snap snap) {
+            
+        }
+
+        public override void DeleteSnap(Snap snap) {
+            
+        }
+
         public void AddTestData() {
             for (int i = 0; i < 100; i++) {
                 Snap snap = new Snap(i, "Test " + i, "Content " + i);
