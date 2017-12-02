@@ -5,6 +5,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    
+    <Page.Resources>
+        <Style TargetType="ListViewItem">
+            <Setter Property="ListViewItem.Height" Value="60"></Setter>
+
+        </Style>
+    </Page.Resources>
+
 
     <RelativePanel Width="Auto"
                    Height="Auto">
@@ -38,7 +46,7 @@
                           RelativePanel.AlignBottomWithPanel="True"
                           RelativePanel.AlignLeftWithPanel="True"
                           RelativePanel.AlignRightWithPanel="True"
-                          Margin="0 60 0 0">
+                          Margin="0 58 0 48">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="0 5 0 10">
@@ -50,8 +58,23 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </RelativePanel>
 
+                <CommandBar     RelativePanel.AlignLeftWithPanel="True"
+                                RelativePanel.AlignRightWithPanel="True"
+                                RelativePanel.AlignBottomWithPanel="True"
+                                Margin="0 0 0 0">
+
+                    <AppBarButton Icon="Add"    Label="New"    HorizontalAlignment="Center" Click="SnapListAddButton_OnClick"/>
+                    <AppBarButton Icon="Cancel" Label="Remove" HorizontalAlignment="Center" Click="SnapListRemoveButton_OnClick" />
+
+                    <CommandBar.Content >
+                        <TextBlock Margin="12,14">
+                            <Run Text="{x:Bind store.Snaps.Count, Mode=OneWay}"/>
+                            <Run Text="Snips"></Run>
+                        </TextBlock>
+                    </CommandBar.Content>
+                </CommandBar>
+            </RelativePanel>
 
             <RelativePanel Grid.Row="0"
                            Grid.Column="1"
@@ -80,5 +103,4 @@
             </RelativePanel>
         </Grid>
     </RelativePanel>
-
 </Page>

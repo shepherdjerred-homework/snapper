@@ -20,6 +20,13 @@ namespace snapper {
 
         }
 
+        public void AddSnap(Snap newSnap)
+        {
+            SnapViewModel snapViewModel = new SnapViewModel(newSnap);
+
+            snaps.Add(snapViewModel);
+        }
+
         public StoreViewModel(Store store) {
             this.store = store;
             snaps = new ObservableCollection<SnapViewModel>();
