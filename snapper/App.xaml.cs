@@ -80,22 +80,22 @@ namespace snapper
             }
 
             //draw into the title bar
-            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = true;
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
 
             //remove the solid-colored backgrounds behind the caption controls and system back button
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
 
-            if ((ElementTheme)ApplicationData.Current.LocalSettings.Values["AppTheme"] == ElementTheme.Dark)
-            {
-                titleBar.ButtonBackgroundColor = Colors.Transparent;
-                titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-            }
-            else
-            {
-                titleBar.ButtonForegroundColor = Colors.Black;
-                titleBar.ButtonBackgroundColor = Colors.Transparent;
-                titleBar.ButtonInactiveBackgroundColor = Colors.White;
-            }
+            //if ((ElementTheme)ApplicationData.Current.LocalSettings.Values["AppTheme"] == ElementTheme.Dark)
+            //{
+            //    titleBar.ButtonBackgroundColor = Colors.Transparent;
+            //    titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            //}
+            //else
+            //{
+            //    titleBar.ButtonForegroundColor = Colors.Black;
+            //    titleBar.ButtonBackgroundColor = Colors.Transparent;
+            //    titleBar.ButtonInactiveBackgroundColor = Colors.White;
+            //}
 
         }
 
