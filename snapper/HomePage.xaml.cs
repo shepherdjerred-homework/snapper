@@ -1,5 +1,8 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Specialized;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
 namespace snapper
 {
@@ -19,6 +22,7 @@ namespace snapper
             store = new StoreViewModel(new SqliteStore());
             
             SnapList.ItemsSource = store.Snaps;
+
         }
 
         private void SelectFirstSnap()
@@ -35,6 +39,7 @@ namespace snapper
             store.AddSnap(newSnap);
             SnapList.SelectedIndex = SnapList.Items.Count - 1;
             SnapList.ScrollIntoView(SnapList.SelectedItem);
+            SnapContent.Focus(FocusState.Programmatic);
         }
 
         private void SnapListRemoveButton_OnClick(object sender, RoutedEventArgs e)
@@ -42,6 +47,7 @@ namespace snapper
             int tempIndex = SnapList.SelectedIndex;
             store.DeleteSnap(store.Snaps[SnapList.SelectedIndex]);
             store.Snaps.RemoveAt(SnapList.SelectedIndex);
+
             if (SnapList.Items != null && SnapList.Items.Count > 0)
             {
                 if (tempIndex == SnapList.Items.Count)
@@ -52,8 +58,19 @@ namespace snapper
                 {
                     SnapList.SelectedIndex = tempIndex;
                 }
+
                 SnapList.ScrollIntoView(SnapList.SelectedItem);
             }
         }
+
+        private void SnapList_OnRightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            var baseobj = e.OriginalSource as FrameworkElement;
+            var myObject = baseobj.DataContext as snapper.SnapViewModel;
+            var newIndex = SnapList.Items.IndexOf(myObject);
+            SnapList.SelectedIndex = newIndex;
+            SnapList.ScrollIntoView(SnapList.SelectedItem);
+        }
+
     }
 }

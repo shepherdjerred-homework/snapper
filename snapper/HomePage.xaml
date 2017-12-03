@@ -5,14 +5,28 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    
+
     <Page.Resources>
         <Style TargetType="ListViewItem">
-            <Setter Property="ListViewItem.Height" Value="60"></Setter>
-
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="ContextFlyout">
+                <Setter.Value>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="Remove" Click="SnapListRemoveButton_OnClick"/>
+                    </MenuFlyout>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="ListView">
+            <Setter Property="ContextFlyout">
+                <Setter.Value>
+                    <MenuFlyout>
+                        <MenuFlyoutItem Text="New" Click="SnapListAddButton_OnClick" />
+                    </MenuFlyout>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Page.Resources>
-
 
     <RelativePanel Width="Auto"
                    Height="Auto">
@@ -37,11 +51,12 @@
                 <AutoSuggestBox
                     RelativePanel.AlignLeftWithPanel="True"
                     RelativePanel.AlignRightWithPanel="True"
-                    Margin="12 12 12 12"
-                    QueryIcon="Find" />
+                    Margin="12 12 12 12" 
+                    QueryIcon="Find"/>
 
 
                 <ListView x:Name="SnapList"
+                          RightTapped="SnapList_OnRightTapped"
                           RelativePanel.AlignTopWithPanel="True"
                           RelativePanel.AlignBottomWithPanel="True"
                           RelativePanel.AlignLeftWithPanel="True"
@@ -49,6 +64,7 @@
                           Margin="0 58 0 48">
                     <ListView.ItemTemplate>
                         <DataTemplate>
+                            
                             <StackPanel Margin="0 5 0 10">
                                 <TextBlock Text="{Binding Title, Mode=OneWay}"
                                            FontSize="20" />
