@@ -28,6 +28,9 @@ namespace snapper {
                     case "Home":
                         ContentFrame.Navigate(typeof(HomePage));
                         break;
+                    case "About":
+                        ContentFrame.Navigate(typeof(AboutPage));
+                        break;
                 }
             }
         }

@@ -14,6 +14,7 @@
 
         <NavigationView.MenuItems >
             <NavigationViewItem Content="Home" Tag="home" Icon="home" />
+            <NavigationViewItem Content="About" Tag="about" Icon="Help"/>
         </NavigationView.MenuItems>
 
         <Frame x:Name="ContentFrame">
