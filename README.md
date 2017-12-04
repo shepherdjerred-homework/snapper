@@ -21,4 +21,4 @@ Adam Campbell (50%)
 * Add restart notification for switching themes
 
 Screenshot
-![Screenshot](https://i.imgur.com/Pm44Pgb.png)
+![Screenshot](https://i.imgur.com/FnVDLby.png)
