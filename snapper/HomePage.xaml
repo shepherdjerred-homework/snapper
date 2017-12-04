@@ -49,10 +49,13 @@
                            Background="{StaticResource SystemControlAcrylicWindowBrush}">
 
                 <AutoSuggestBox
+                    Name="AutoSuggestBox"
+                    TextChanged="AutoSuggestBox_OnTextChanged"
                     RelativePanel.AlignLeftWithPanel="True"
                     RelativePanel.AlignRightWithPanel="True"
                     Margin="12 12 12 12" 
-                    QueryIcon="Find"/>
+                    QueryIcon="Find"
+                    IsSuggestionListOpen="False"/>
 
 
                 <ListView x:Name="SnapList"
@@ -84,9 +87,9 @@
                     <AppBarButton Icon="Cancel" Label="Remove" HorizontalAlignment="Center" Click="SnapListRemoveButton_OnClick" />
 
                     <CommandBar.Content >
-                        <TextBlock Margin="12,14">
-                            <Run Text="{x:Bind store.Snaps.Count, Mode=OneWay}"/>
-                            <Run Text="Snips"></Run>
+                        <TextBlock Margin="12,14" Name ="SnapText">
+                            <!--<Text="{x:Bind filterStore.Snaps.Count, Mode=OneWay}" Name="SnapText"/>-->
+                            <!--<Run Text="Snaps"></Run>-->
                         </TextBlock>
                     </CommandBar.Content>
                 </CommandBar>

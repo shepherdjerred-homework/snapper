@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Collections.Specialized;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 
 namespace snapper
@@ -19,10 +21,9 @@ namespace snapper
 
         private void LoadFromStore()
         {
-            store = new StoreViewModel(new SqliteStore());
-            
+            store       = new StoreViewModel(new SqliteStore());
             SnapList.ItemsSource = store.Snaps;
-
+            SnapText.Text = SnapList.Items.Count + " Snaps";
         }
 
         private void SelectFirstSnap()
@@ -39,17 +40,38 @@ namespace snapper
             store.AddSnap(newSnap);
             SnapList.SelectedIndex = SnapList.Items.Count - 1;
             SnapList.ScrollIntoView(SnapList.SelectedItem);
+            SnapText.Text = SnapList.Items.Count + " Snaps";
+
             SnapContent.Focus(FocusState.Programmatic);
         }
 
         private void SnapListRemoveButton_OnClick(object sender, RoutedEventArgs e)
         {
             int tempIndex = SnapList.SelectedIndex;
-            store.DeleteSnap(store.Snaps[SnapList.SelectedIndex]);
-            store.Snaps.RemoveAt(SnapList.SelectedIndex);
 
             if (SnapList.Items != null && SnapList.Items.Count > 0)
             {
+                
+
+                if (AutoSuggestBox.Text != "")
+                {
+                    //get object being deleted and reference back to the original data source -- we're filtering data
+
+                    var baseobj = SnapList.SelectedItem;
+                    var myObject = baseobj as snapper.SnapViewModel;
+                    var newIndex = store.Snaps.IndexOf(myObject);
+                    store.DeleteSnap(store.Snaps[newIndex]);
+                    store.Snaps.RemoveAt(newIndex);
+                    updateList();
+                }
+                else
+                {
+                    store.DeleteSnap(store.Snaps[SnapList.SelectedIndex]);
+                    store.Snaps.Remove(store.Snaps[SnapList.SelectedIndex]);
+                }
+
+                SnapText.Text = SnapList.Items.Count + " Snaps";
+
                 if (tempIndex == SnapList.Items.Count)
                 {
                     SnapList.SelectedIndex = tempIndex - 1;
@@ -72,5 +94,38 @@ namespace snapper
             SnapList.ScrollIntoView(SnapList.SelectedItem);
         }
 
+        private void updateList()
+        {
+            var boxContents = AutoSuggestBox.Text.ToLower();
+            var linqResults = store.Snaps.Where(snap => snap.Content.ToLower().Contains(boxContents) ||
+                                                        snap.Title.ToLower().Contains(boxContents));
+            if (boxContents == "")
+            {
+                SnapList.ItemsSource = store.Snaps;
+                SnapText.Text = SnapList.Items.Count + " Snaps";
+            }
+            else
+            {
+                SnapList.ItemsSource = linqResults;
+                SnapText.Text = linqResults.Count() + " Snaps";
+            }
+        }
+
+        private void AutoSuggestBox_OnTextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            var boxContents = AutoSuggestBox.Text.ToLower();
+            var linqResults = store.Snaps.Where(snap => snap.Content.ToLower().Contains(boxContents) ||
+                                                        snap.Title.ToLower().Contains(boxContents));
+            if (boxContents == "")
+            {
+                SnapList.ItemsSource = store.Snaps;
+                SnapText.Text = SnapList.Items.Count + " Snaps";
+            }
+            else
+            {
+                SnapList.ItemsSource = linqResults;
+                SnapText.Text = linqResults.Count() + " Snaps";
+            }
+        }
     }
 }
